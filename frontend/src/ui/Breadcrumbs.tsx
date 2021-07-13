@@ -1,5 +1,5 @@
 import React from "react";
-import { HiOutlineChevronRight, HiOutlineHome } from "react-icons/hi";
+import { FiChevronRight, FiHome } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
 import { Link } from "../router";
@@ -21,7 +21,7 @@ export const Breadcrumbs: React.FC<Props> = ({ path }) => {
         <nav aria-label="breadcrumbs">
             <ol css={{ listStyle: "none", padding: 0, margin: 0 }}>
                 <Segment target="/" first active={path.length === 0}>
-                    <HiOutlineHome title={t("home")} />
+                    <FiHome title={t("home")} />
                 </Segment>
                 {path.map((segment, i) => (
                     <Segment key={i} target={segment.link} active={i === path.length - 1}>
@@ -41,7 +41,7 @@ type SegmentProps = {
 
 const Segment: React.FC<SegmentProps> = ({ target, active, first = false, children }) => (
     <li css={{ display: "inline" }} {...active && { "aria-current": "location" }}>
-        {first || <HiOutlineChevronRight css={{ margin: "0 8px", color: "#888" }}/>}
+        {first || <FiChevronRight css={{ margin: "0 8px", color: "#888" }}/>}
         {active ? children : <Link to={target}>{children}</Link>}
     </li>
 );

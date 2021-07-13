@@ -1,5 +1,5 @@
 import { Trans, useTranslation } from "react-i18next";
-import { HiOutlineEmojiSad } from "react-icons/hi";
+import { FiFrown } from "react-icons/fi";
 
 import { MAIN_PADDING, OUTER_CONTAINER_MARGIN } from "../layout/Root";
 import { Header } from "../layout/Header";
@@ -29,7 +29,7 @@ export const NotFound: React.FC<Props> = ({ kind }) => {
                 margin: "0 auto",
                 maxWidth: 500,
             }}>
-                <HiOutlineEmojiSad css={{ margin: "0 auto", display: "block", fontSize: 90 }} />
+                <FiFrown css={{ margin: "0 auto", display: "block", fontSize: 90 }} />
                 <h1 css={{ textAlign: "center", margin: "30px 0" }}>
                     {match(kind, {
                         "page": () => t("not-found.page-not-found"),
