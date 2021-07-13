@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 import { graphql, useFragment } from "react-relay";
 import type { Interpolation, Theme } from "@emotion/react";
 
@@ -218,7 +217,7 @@ const MobileNavImpl: React.FC<NavDataProp & MobileProps> = ({ nav, hide }) => (
                         ...ITEM_LINK_BASE_STYLE,
                     }}
                 >
-                    <FontAwesomeIcon icon={faChevronLeft} css={{ marginRight: 6 }}/>
+                    <HiOutlineChevronLeft css={{ marginRight: 6 }}/>
                     Back
                 </Link>
             )}
@@ -279,7 +278,7 @@ const Item: React.FC<{ item: NavItem }> = ({ item }) => {
             }}
         >
             <div>{item.label}</div>
-            <FontAwesomeIcon icon={faChevronRight} />
+            <HiOutlineChevronRight />
         </Link>;
 
     return (

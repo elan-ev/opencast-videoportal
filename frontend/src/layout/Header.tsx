@@ -1,6 +1,11 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faBars, faSearch, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+    HiOutlineArrowLeft,
+    HiOutlineMenu,
+    HiOutlineSearch,
+    HiOutlineX,
+    HiOutlineUser,
+} from "react-icons/hi";
 import { useTranslation } from "react-i18next";
 import type { Interpolation, Theme } from "@emotion/react";
 
@@ -48,7 +53,7 @@ const SearchMode: React.FC = () => {
 
     return <>
         <ActionIcon title={t("back")} onClick={() => menu.close()} >
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <HiOutlineArrowLeft />
         </ActionIcon>
         <SearchField variant="mobile" />
     </>;
@@ -62,7 +67,7 @@ const OpenMenuMode: React.FC = () => {
         <Logo />
         <ButtonContainer>
             <ActionIcon title={t("close")} onClick={() => menu.close()}>
-                <FontAwesomeIcon icon={faTimes} fixedWidth />
+                <HiOutlineX />
             </ActionIcon>
         </ButtonContainer>
     </>;
@@ -86,11 +91,11 @@ const DefaultMode: React.FC<{ hideNavIcon: boolean }> = ({ hideNavIcon }) => {
                     },
                 }}
             >
-                <FontAwesomeIcon icon={faSearch} fixedWidth />
+                <HiOutlineSearch />
             </ActionIcon>
 
             <ActionIcon title={t("user.settings")} onClick={() => {}}>
-                <FontAwesomeIcon icon={faUser} fixedWidth />
+                <HiOutlineUser />
             </ActionIcon>
 
             {!hideNavIcon && (
@@ -103,7 +108,7 @@ const DefaultMode: React.FC<{ hideNavIcon: boolean }> = ({ hideNavIcon }) => {
                         },
                     }}
                 >
-                    <FontAwesomeIcon icon={faBars} fixedWidth />
+                    <HiOutlineMenu />
                 </ActionIcon>
             )}
         </ButtonContainer>
