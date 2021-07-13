@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    HiOutlineArrowLeft,
-    HiOutlineMenu,
-    HiOutlineSearch,
-    HiOutlineX,
-    HiOutlineUser,
-} from "react-icons/hi";
+    IoArrowBackOutline,
+    IoMenuOutline,
+    IoSearchOutline,
+    IoCloseOutline,
+    IoPersonOutline,
+} from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import type { Interpolation, Theme } from "@emotion/react";
 
@@ -53,7 +53,7 @@ const SearchMode: React.FC = () => {
 
     return <>
         <ActionIcon title={t("back")} onClick={() => menu.close()} >
-            <HiOutlineArrowLeft />
+            <IoArrowBackOutline />
         </ActionIcon>
         <SearchField variant="mobile" />
     </>;
@@ -67,7 +67,7 @@ const OpenMenuMode: React.FC = () => {
         <Logo />
         <ButtonContainer>
             <ActionIcon title={t("close")} onClick={() => menu.close()}>
-                <HiOutlineX />
+                <IoCloseOutline />
             </ActionIcon>
         </ButtonContainer>
     </>;
@@ -91,11 +91,11 @@ const DefaultMode: React.FC<{ hideNavIcon: boolean }> = ({ hideNavIcon }) => {
                     },
                 }}
             >
-                <HiOutlineSearch />
+                <IoSearchOutline />
             </ActionIcon>
 
             <ActionIcon title={t("user.settings")} onClick={() => {}}>
-                <HiOutlineUser />
+                <IoPersonOutline />
             </ActionIcon>
 
             {!hideNavIcon && (
@@ -108,7 +108,7 @@ const DefaultMode: React.FC<{ hideNavIcon: boolean }> = ({ hideNavIcon }) => {
                         },
                     }}
                 >
-                    <HiOutlineMenu />
+                    <IoMenuOutline />
                 </ActionIcon>
             )}
         </ButtonContainer>

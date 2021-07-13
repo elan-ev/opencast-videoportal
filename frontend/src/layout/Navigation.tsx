@@ -1,5 +1,5 @@
 import React from "react";
-import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import { IoChevronForward, IoChevronBack } from "react-icons/io5";
 import { graphql, useFragment } from "react-relay";
 import type { Interpolation, Theme } from "@emotion/react";
 
@@ -217,7 +217,7 @@ const MobileNavImpl: React.FC<NavDataProp & MobileProps> = ({ nav, hide }) => (
                         ...ITEM_LINK_BASE_STYLE,
                     }}
                 >
-                    <HiOutlineChevronLeft css={{ marginRight: 6 }}/>
+                    <IoChevronBack css={{ marginRight: 6 }}/>
                     Back
                 </Link>
             )}
@@ -278,7 +278,7 @@ const Item: React.FC<{ item: NavItem }> = ({ item }) => {
             }}
         >
             <div>{item.label}</div>
-            <HiOutlineChevronRight />
+            <IoChevronForward />
         </Link>;
 
     return (
