@@ -101,6 +101,18 @@ tobira_macros::gen_config! {
         /// Password of the user used to communicate with Opencast.
         #[example = "D5ntdAKwSx84JdSEpTHYr8nt"]
         sync_password: Secret<String>,
+
+        /// A roughy estimate of how many items (events & series) are
+        /// transferred in each HTTP request while harvesting (syncing) with
+        /// the Opencast instance.
+        ///
+        /// A very large number might cause problems due to the Opencast or
+        /// Tobira node having to hold that many items in memory, or due to
+        /// network request size restrictions. Too small of a number means that
+        /// the HTTP overhead will become more significant thus slowing down
+        /// the syncing process. In extreme cases, too low numbers can also
+        /// lead to some other, temporary problems.
+        preferred_harvest_size: u32 = 500,
     },
     theme: {
         header_height: u32 = 70,
