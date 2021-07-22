@@ -45,3 +45,9 @@ user:
 login:
   button-label: Login
   not-logged-in: Not logged in
+
+video:
+  creator: By
+  created: Created on
+  updated: Last update
+  part-of-series: Part of
