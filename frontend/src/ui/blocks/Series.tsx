@@ -5,6 +5,8 @@ import { Block, Title } from "../Blocks";
 import type { BlockData } from "../Blocks";
 import { Link } from "../../router";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 
 type Props = {
@@ -32,6 +34,25 @@ type GridTypeProps = {
 
 const GridTile: React.FC<GridTypeProps> = ({ event, realmPath }) => {
     const [THUMB_WIDTH, THUMB_HEIGHT] = [16, 9].map(x => x * 15);
+    const thumbnail = event.thumbnail == null
+        ? <div css={{
+            display: "flex",
+            width: THUMB_WIDTH,
+            height: THUMB_HEIGHT,
+            borderRadius: 4,
+            backgroundColor: "var(--grey92)",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 40,
+        }}>
+            <FontAwesomeIcon icon={faVolumeUp} />
+        </div>
+        : <img
+            src={event.thumbnail}
+            width={THUMB_WIDTH}
+            height={THUMB_HEIGHT}
+            css={{ display: "block", borderRadius: 4 }}
+        />;
 
     return (
         <Link
@@ -45,12 +66,7 @@ const GridTile: React.FC<GridTypeProps> = ({ event, realmPath }) => {
             }}
         >
             <div css={{ position: "relative" }}>
-                <img
-                    src={event.thumbnail}
-                    width={THUMB_WIDTH}
-                    height={THUMB_HEIGHT}
-                    css={{ display: "block", borderRadius: 4 }}
-                />
+                {thumbnail}
                 {event.duration != null && (
                     <div css={{
                         position: "absolute",

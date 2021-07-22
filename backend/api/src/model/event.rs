@@ -17,7 +17,7 @@ pub(crate) struct Event {
     updated: DateTime<Utc>,
     creator: Option<String>,
 
-    thumbnail: String,
+    thumbnail: Option<String>,
     tracks: Vec<Track>,
 }
 
@@ -44,8 +44,8 @@ impl Event {
     fn duration(&self) -> Option<f64> {
         self.duration.map(Into::into)
     }
-    fn thumbnail(&self) -> &str {
-        &self.thumbnail
+    fn thumbnail(&self) -> Option<&str> {
+        self.thumbnail.as_deref()
     }
     fn tracks(&self) -> &[Track] {
         &self.tracks
@@ -72,8 +72,7 @@ impl Event {
 impl Event {
     pub(crate) async fn load_by_id(id: Id, context: &Context) -> FieldResult<Option<Self>> {
         let result = if let Some(key) = id.key_for(Id::EVENT_KIND) {
-            context.db.get()
-                .await?
+            context.db
                 .query_opt(
                     &*format!("select {} from events where id = $1", Self::COL_NAMES),
                     &[&(key as i64)],
@@ -88,8 +87,7 @@ impl Event {
     }
 
     pub(crate) async fn load_for_series(series_key: Key, context: &Context) -> FieldResult<Vec<Self>> {
-        let result = context.db.get()
-            .await?
+        let result = context.db
             .query_raw(
                 &*format!("select {} from events where series = $1", Self::COL_NAMES),
                 &[series_key as i64],
